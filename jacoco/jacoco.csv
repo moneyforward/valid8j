@@ -1,0 +1,5 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+valid8j,com.github.dakusui.valid8j,Assertions,4,27,1,1,1,8,2,5,1,5
+valid8j,com.github.dakusui.valid8j,Ensures,0,18,0,0,0,4,0,4,0,4
+valid8j,com.github.dakusui.valid8j,Requires,0,23,0,0,0,5,0,5,0,5
+valid8j,com.github.dakusui.valid8j,ValidationFluents,0,164,0,0,0,31,0,18,0,18

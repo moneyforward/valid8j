@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Ensures.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">valid8j</a> &gt; <a href="index.source.html" class="el_package">com.github.dakusui.valid8j</a> &gt; <span class="el_source">Ensures.java</span></div><h1>Ensures.java</h1><pre class="source lang-java linenums">package com.github.dakusui.valid8j;
+
+import com.github.dakusui.valid8j_pcond.validator.Validator;
+
+import java.util.function.Predicate;
+
+/**
+ * A class that offers entry-points for checking &quot;postconditions&quot; with a normal
+ * conditional statement of Java language.
+ * That is, `if` or ternary operator, not an `assert` statement.
+ * This means, the user of your product is not able to disable the checks you
+ * write at runtime, unlike ones written using `assert` statements.
+ *
+ * The author of library thinks these methods should be used in &quot;public facing&quot;
+ * methods, when you should claim that the &quot;external&quot; party introduced the bug.
+ *
+ * The author of library thinks these methods should be used in &quot;public facing&quot;
+ * context when the provider of the value to be examined introduced
+ * a bug, which makes the condition `false`.
+ *
+ * For instance, it is an intended use-case, where you call `ensure` at the end of
+ * your method in order to express a condition to be satisfied by the value returned
+ * from your method.
+ */
+<span class="fc" id="L25">public enum Ensures {</span>
+  ;
+
+  /**
+   * Checks if a given value is not `null`.
+   * If not an exception will be thrown.
+   *
+   * @param value A value to be checked.
+   * @return The value itself.
+   * @param &lt;T&gt; The type of the `value`.
+   */
+  public static &lt;T&gt; T ensureNonNull(T value) {
+<span class="fc" id="L37">    return Validator.instance().ensureNonNull(value);</span>
+  }
+
+  /**
+   * Checks if a given state `value`satisfies a postcondition `cond`.
+   * If not an exception will be thrown.
+   *
+   * @param value A value to be checked.
+   * @param cond A condition that checks `value`.
+   * @return The `value` itself
+   * @param &lt;T&gt; The type of the `value`.
+   */
+  public static &lt;T&gt; T ensureState(T value, Predicate&lt;? super T&gt; cond) {
+<span class="fc" id="L50">    return Validator.instance().ensureState(value, cond);</span>
+  }
+
+  /**
+   * Checks if a given `value` satisfies a postcondition `cond`.
+   * If not an exception will be thrown.
+   *
+   * @param value A value to be checked.
+   * @param cond A condition that checks `value`.
+   * @return The `value` itself.
+   * @param &lt;T&gt; The type of the `value`.
+   */
+  public static &lt;T&gt; T ensure(T value, Predicate&lt;? super T&gt; cond) {
+<span class="fc" id="L63">    return Validator.instance().ensure(value, cond);</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

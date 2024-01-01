@@ -1,0 +1,16 @@
+com.github.dakusui.valid8j
+com.github.dakusui.valid8j_pcond.core
+com.github.dakusui.valid8j_pcond.core.fluent
+com.github.dakusui.valid8j_pcond.core.fluent.builtins
+com.github.dakusui.valid8j_pcond.core.identifieable
+com.github.dakusui.valid8j_pcond.core.printable
+com.github.dakusui.valid8j_pcond.core.refl
+com.github.dakusui.valid8j_pcond.experimentals.currying
+com.github.dakusui.valid8j_pcond.experimentals.currying.context
+com.github.dakusui.valid8j_pcond.experimentals.currying.multi
+com.github.dakusui.valid8j_pcond.experimentals.cursor
+com.github.dakusui.valid8j_pcond.fluent
+com.github.dakusui.valid8j_pcond.forms
+com.github.dakusui.valid8j_pcond.internals
+com.github.dakusui.valid8j_pcond.validator
+com.github.dakusui.valid8j_pcond.validator.exceptions

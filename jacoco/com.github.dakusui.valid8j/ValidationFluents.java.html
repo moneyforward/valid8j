@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ValidationFluents.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">valid8j</a> &gt; <a href="index.source.html" class="el_package">com.github.dakusui.valid8j</a> &gt; <span class="el_source">ValidationFluents.java</span></div><h1>ValidationFluents.java</h1><pre class="source lang-java linenums">package com.github.dakusui.valid8j;
+
+import com.github.dakusui.valid8j_pcond.core.fluent.builtins.ObjectTransformer;
+import com.github.dakusui.valid8j_pcond.fluent.Statement;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Predicate;
+
+import static java.util.stream.Collectors.toList;
+
+/**
+ * A class to provide fluent versions of `valid8j` entry points.
+ * You can pass `Statement` objects created by static methods in `Statement` interface such as
+ * `objectValue`, `stringValue`, `intValue`, etc.
+ *
+ * @see Statement
+ */
+<span class="fc" id="L19">public enum ValidationFluents {</span>
+  ;
+
+  /**
+   * Fluent version of {@link Requires#requireArgument(Object, Predicate)} (Object, Predicate)}.
+   *
+   * @param statement A statement to be verified
+   */
+  public static &lt;T&gt; T requireArgument(Statement&lt;T&gt; statement) {
+<span class="fc" id="L28">    return Requires.requireArgument(statement.statementValue(), statement.statementPredicate());</span>
+  }
+
+  /**
+   * Fluent version of {@link Requires#requireArgument(Object, Predicate)}.
+   * Use this method when you need to verify multiple values.
+   *
+   * @param statements Statements to be verified
+   */
+  public static void requireArguments(Statement&lt;?&gt;... statements) {
+<span class="fc" id="L38">    List&lt;?&gt; values = Arrays.stream(statements).map(Statement::statementValue).collect(toList());</span>
+<span class="fc" id="L39">    Requires.requireArgument(values, Statement.createPredicateForAllOf(statements));</span>
+<span class="fc" id="L40">  }</span>
+
+  public static &lt;T&gt; T requireStatement(Statement&lt;T&gt; statement) {
+<span class="fc" id="L43">    return Requires.require(statement.statementValue(), statement.statementPredicate());</span>
+  }
+
+  /**
+   * Fluent version of {@link Requires#require(Object, Predicate)}.
+   * Use this method when you need to verify multiple values.
+   *
+   * @param statements Statements to be verified
+   */
+  public static void requireAll(Statement&lt;?&gt;... statements) {
+<span class="fc" id="L53">    List&lt;?&gt; values = Arrays.stream(statements).map(Statement::statementValue).collect(toList());</span>
+<span class="fc" id="L54">    Requires.require(values, Statement.createPredicateForAllOf(statements));</span>
+<span class="fc" id="L55">  }</span>
+
+  public static &lt;T&gt; T requireState(Statement&lt;T&gt; statement) {
+<span class="fc" id="L58">    return Requires.requireState(statement.statementValue(), statement.statementPredicate());</span>
+  }
+
+  /**
+   * Fluent version of {@link Requires#requireState(Object, Predicate)}.
+   * Use this method when you need to verify multiple values.
+   *
+   * @param statements Statements to be verified
+   */
+  @SafeVarargs
+  public static &lt;T&gt; void requireStates(Statement&lt;T&gt;... statements) {
+<span class="fc" id="L69">    List&lt;?&gt; values = Arrays.stream(statements).map(Statement::statementValue).collect(toList());</span>
+<span class="fc" id="L70">    Requires.requireState(values, Statement.createPredicateForAllOf(statements));</span>
+<span class="fc" id="L71">  }</span>
+
+  public static &lt;T&gt; T ensureStatement(Statement&lt;T&gt; statement) {
+<span class="fc" id="L74">    return Ensures.ensure(statement.statementValue(), statement.statementPredicate());</span>
+  }
+
+  /**
+   * Fluent version of {@link Ensures#ensure(Object, Predicate)}.
+   * Use this method when you need to verify multiple values.
+   *
+   * @param statements Statements to be verified
+   */
+  @SafeVarargs
+  public static &lt;T&gt; void ensureAll(Statement&lt;T&gt;... statements) {
+<span class="fc" id="L85">    List&lt;?&gt; values = Arrays.stream(statements).map(Statement::statementValue).collect(toList());</span>
+<span class="fc" id="L86">    Ensures.ensure(values, Statement.createPredicateForAllOf(statements));</span>
+<span class="fc" id="L87">  }</span>
+
+  /**
+   * Fluent version of {@link Ensures#ensureState(Object, Predicate)}.
+   * Use this method when you need to verify multiple values.
+   *
+   * @param statement A statement to be verified
+   */
+  public static &lt;T&gt; T ensureState(Statement&lt;T&gt; statement) {
+<span class="fc" id="L96">    return Ensures.ensureState(statement.statementValue(), statement.statementPredicate());</span>
+  }
+
+  /**
+   * Fluent version of {@link Ensures#ensureState(Object, Predicate)}.
+   * Use this method when you need to verify multiple values.
+   *
+   * @param statements Statements to be verified
+   */
+  @SafeVarargs
+  public static &lt;T&gt; void ensureStates(Statement&lt;T&gt;... statements) {
+<span class="fc" id="L107">    List&lt;?&gt; values = Arrays.stream(statements).map(Statement::statementValue).collect(toList());</span>
+<span class="fc" id="L108">    Ensures.ensureState(values, Statement.createPredicateForAllOf(statements));</span>
+<span class="fc" id="L109">  }</span>
+
+  /**
+   * Fluent version of {@link Assertions#that(Object, Predicate)}.
+   * Use this method when you need to verify multiple values.
+   *
+   * @param statement A statement to be verified
+   */
+  public static &lt;T&gt; boolean that(Statement&lt;T&gt; statement) {
+<span class="fc" id="L118">    return Assertions.that(statement.statementValue(), statement.statementPredicate());</span>
+  }
+
+  /**
+   * Fluent version of {@link Assertions#that(Object, Predicate)}.
+   * Use this method when you need to verify multiple values.
+   *
+   * @param statements Statements to be verified
+   */
+  @SafeVarargs
+  public static &lt;T&gt; boolean all(Statement&lt;T&gt;... statements) {
+<span class="fc" id="L129">    List&lt;?&gt; values = Arrays.stream(statements).map(Statement::statementValue).collect(toList());</span>
+<span class="fc" id="L130">    return Assertions.that(values, Statement.createPredicateForAllOf(statements));</span>
+  }
+
+  /**
+   * Fluent version of {@link Assertions#precondition(Object, Predicate)}.
+   * Use this method when you need to verify multiple values.
+   *
+   * @param statement A statement to be verified
+   */
+  public static &lt;T&gt; boolean precondition(Statement&lt;T&gt; statement) {
+<span class="fc" id="L140">    return Assertions.precondition(statement.statementValue(), statement.statementPredicate());</span>
+  }
+
+  /**
+   * Fluent version of {@link Assertions#precondition(Object, Predicate)}.
+   * Use this method when you need to verify multiple values.
+   *
+   * @param statements Statements to be verified
+   */
+  @SafeVarargs
+  public static &lt;T&gt; boolean preconditions(Statement&lt;T&gt;... statements) {
+<span class="fc" id="L151">    List&lt;?&gt; values = Arrays.stream(statements).map(Statement::statementValue).collect(toList());</span>
+<span class="fc" id="L152">    return Assertions.precondition(values, Statement.createPredicateForAllOf(statements));</span>
+  }
+
+  /**
+   * Fluent version of {@link Assertions#postcondition(Object, Predicate)}.
+   *
+   * @param statement A statement to be verified
+   */
+  public static &lt;T&gt; boolean postcondition(Statement&lt;T&gt; statement) {
+<span class="fc" id="L161">    return Assertions.postcondition(statement.statementValue(), statement.statementPredicate());</span>
+  }
+
+  /**
+   * Fluent version of {@link Assertions#postcondition(Object, Predicate)}.
+   * Use this method when you need to verify multiple values.
+   *
+   * @param statements Statements to be verified
+   */
+  @SafeVarargs
+  public static &lt;T&gt; boolean postconditions(Statement&lt;T&gt;... statements) {
+<span class="fc" id="L172">    List&lt;?&gt; values = Arrays.stream(statements).map(Statement::statementValue).collect(toList());</span>
+<span class="fc" id="L173">    return Assertions.postcondition(values, Statement.createPredicateForAllOf(statements));</span>
+  }
+
+  public static &lt;E&gt; ObjectTransformer&lt;E, E&gt; value(E object) {
+<span class="fc" id="L177">    return Statement.objectValue(object);</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
