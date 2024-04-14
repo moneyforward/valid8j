@@ -20,7 +20,7 @@ public enum ValidationFluents {
   ;
 
   /**
-   * Fluent version of {@link Requires#requireArgument(Object, Predicate)} (Object, Predicate)}.
+   * Fluent version of {@link Requires#requireArgument(Object, Predicate)}.
    *
    * @param statement A statement to be verified
    */
@@ -65,7 +65,7 @@ public enum ValidationFluents {
    * @param statements Statements to be verified
    */
   @SafeVarargs
-  public static <T> void requireStates(Statement<T>... statements) {
+  public static void requireStates(Statement<?>... statements) {
     List<?> values = Arrays.stream(statements).map(Statement::statementValue).collect(toList());
     Requires.requireState(values, Statement.createPredicateForAllOf(statements));
   }
@@ -81,7 +81,7 @@ public enum ValidationFluents {
    * @param statements Statements to be verified
    */
   @SafeVarargs
-  public static <T> void ensureAll(Statement<T>... statements) {
+  public static void ensureAll(Statement<?>... statements) {
     List<?> values = Arrays.stream(statements).map(Statement::statementValue).collect(toList());
     Ensures.ensure(values, Statement.createPredicateForAllOf(statements));
   }
@@ -103,7 +103,7 @@ public enum ValidationFluents {
    * @param statements Statements to be verified
    */
   @SafeVarargs
-  public static <T> void ensureStates(Statement<T>... statements) {
+  public static void ensureStates(Statement<?>... statements) {
     List<?> values = Arrays.stream(statements).map(Statement::statementValue).collect(toList());
     Ensures.ensureState(values, Statement.createPredicateForAllOf(statements));
   }
@@ -125,7 +125,7 @@ public enum ValidationFluents {
    * @param statements Statements to be verified
    */
   @SafeVarargs
-  public static <T> boolean all(Statement<T>... statements) {
+  public static boolean all(Statement<?>... statements) {
     List<?> values = Arrays.stream(statements).map(Statement::statementValue).collect(toList());
     return Assertions.that(values, Statement.createPredicateForAllOf(statements));
   }
@@ -147,7 +147,7 @@ public enum ValidationFluents {
    * @param statements Statements to be verified
    */
   @SafeVarargs
-  public static <T> boolean preconditions(Statement<T>... statements) {
+  public static boolean preconditions(Statement<?>... statements) {
     List<?> values = Arrays.stream(statements).map(Statement::statementValue).collect(toList());
     return Assertions.precondition(values, Statement.createPredicateForAllOf(statements));
   }
@@ -168,7 +168,7 @@ public enum ValidationFluents {
    * @param statements Statements to be verified
    */
   @SafeVarargs
-  public static <T> boolean postconditions(Statement<T>... statements) {
+  public static boolean postconditions(Statement<?>... statements) {
     List<?> values = Arrays.stream(statements).map(Statement::statementValue).collect(toList());
     return Assertions.postcondition(values, Statement.createPredicateForAllOf(statements));
   }
