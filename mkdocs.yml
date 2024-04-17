@@ -1,0 +1,7 @@
+site_name: 'valid8j-docs'
+
+nav:
+  - Home: docs/index.md
+
+plugins:
+  - techdocs-core
