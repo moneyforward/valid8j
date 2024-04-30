@@ -4,7 +4,8 @@ metadata:
   name: valid8j
   annotations:
     github.com/project-slug: moneyforward/valid8j
-    backstage.io/techdocs-ref: dir:.spec:
+    backstage.io/techdocs-ref: dir:.
+spec:
   type: other
   lifecycle: unknown
   owner: dakusui
