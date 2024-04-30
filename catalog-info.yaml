@@ -4,7 +4,7 @@ metadata:
   name: valid8j
   annotations:
     github.com/project-slug: moneyforward/valid8j
-    backstage.io/techdocs-ref: dir:.
+    backstage.io/techdocs-ref: url:https://githubhost.com/moneyforward/valid8j/tree/gh-pages
 spec:
   type: other
   lifecycle: unknown
